@@ -25,12 +25,34 @@
  */
 #define INIT_SIZE 5  
 
+typedef struct {
+    int id;
+    char *name;
+} Table;
+
+typedef struct {
+    int id;
+    char *name;
+    int ward;
+} NeighbourhoodTable;
+
+typedef struct {
+    int tableID;
+    int tableTypeId;
+    int surfaceMaterialId;
+    int structuralMaterialId;
+    int neighbhdId;
+    char *streetAvenue;
+    int ward;
+    int latitude;
+    int longitude;
+} PicnicTable;
 
 /*
  * You may change the internal details of the struct below,
  * only keep it typedef'ed to DataBase
  */
-typedef struct {
+ typedef struct {
     // You can add anything you see fit here
     Table *tableTypeTable;
     Table *surfaceMaterialTable;
