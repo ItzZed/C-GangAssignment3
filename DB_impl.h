@@ -15,8 +15,21 @@
 #ifndef DB_IMPL_H
 #define DB_IMPL_H
 
-DataBase *importDB(char *fileName);
+// Function to initialize the Table structure,
+// allocates memory for the entries array and initializes its size and capacity
+// It also initializes each entry to NULL
+void initTable(Table *table);
 
-void exportDB(char *fileName, DataBase *Db);
+// Function resizes a tableType table to a new size,
+// reallocates memory for the entries array and updates the capacity
+void resizeTable(Table *table, int newSize);
+
+// Imports from a CSV file into the DataBase structure
+// Allocates memory for the various tables in the DataBase structure
+// Populates lookup tables for tableType, surfaceMaterial, structuralMaterial, and neighborhood
+// Populates the picnicTableTable with PicnicTable entries
+void importDB(char *fileName);
+
+void exportDB(char *fileName);
 
 #endif
