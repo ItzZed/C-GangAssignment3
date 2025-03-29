@@ -26,8 +26,14 @@
 #define INIT_SIZE 5  
 
 typedef struct {
-    int id;
-    char *name;
+    double latitude;
+    double longitude;
+} Location;
+
+typedef struct {
+    int size; // Number of entries in the table
+    int capacity; // Capacity of the table
+    char **entries; // Array of string pointers for table entries
 } Table;
 
 typedef struct {
@@ -38,6 +44,7 @@ typedef struct {
 
 typedef struct {
     int tableID;
+    int siteID;
     int tableTypeId;
     int surfaceMaterialId;
     int structuralMaterialId;
@@ -46,6 +53,7 @@ typedef struct {
     int ward;
     int latitude;
     int longitude;
+    Location location;
 } PicnicTable;
 
 /*
@@ -58,7 +66,9 @@ typedef struct {
     Table *surfaceMaterialTable;
     Table *structuralMaterialTable;
     NeighbourhoodTable *neighborhoodTable;
-    PicnicTable *picnicTableTable;
+    PicnicTable **picnicTableTable;
+    int picnicTableCount; // Number of entries in the picnicTableTable
+    int picnicTableCapacity; // Capacity of the picnicTableTable
 } DataBase;
 
 /* Declare a global DataBase variable*/
